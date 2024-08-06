@@ -11,14 +11,14 @@ export interface Product {
 export interface SalesSummary {
   salesSummaryId: string;
   totalValue: number;
-  changePercent: number;
+  changePercentage: number;
   date: string;
 }
 
 export interface PurchaseSummary {
   purchaseSummaryId: string;
-  totalPurchases: number;
-  changePercent: number;
+  totalPurchased: number;
+  changePercentage: number;
   date: string;
 }
 
