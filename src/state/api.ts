@@ -46,7 +46,7 @@ export interface DashboardMetrics {
 export const api = createApi({
   reducerPath: "api",
   tagTypes: ["DashboardMetrics"],
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL }),
   endpoints: (build) => ({
     getDashboardMetrics: build.query<DashboardMetrics, void>({
       query: () => `/dashboard`,
@@ -54,5 +54,4 @@ export const api = createApi({
     }),
   }),
 });
-
 export const { useGetDashboardMetricsQuery } = api;
