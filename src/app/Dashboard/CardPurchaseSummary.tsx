@@ -1,7 +1,8 @@
-import React from "react";
+"use client";
 import { useGetDashboardMetricsQuery } from "@/state/api";
 import { TrendingDown, TrendingUp } from "lucide-react";
 import numeral from "numeral";
+import React from "react";
 import {
   Area,
   AreaChart,
@@ -39,23 +40,23 @@ const CardPurchaseSummary = () => {
               <div className="flex items-center">
                 <p className="text-2xl font-bold">
                   {lastDataPoint
-                    ? numeral(lastDataPoint.totalPurchases).format("$0.00a")
+                    ? numeral(lastDataPoint.totalPurchased).format("$0.00a")
                     : "0"}
                 </p>
                 {lastDataPoint && (
                   <p
                     className={`text-sm ${
-                      lastDataPoint.changePercent >= 0
+                      lastDataPoint.changePercentage! >= 0
                         ? "text-green-500"
                         : "text-red-500"
                     } flex ml-3`}
                   >
-                    {lastDataPoint.changePercent >= 0 ? (
+                    {lastDataPoint.changePercentage! >= 0 ? (
                       <TrendingUp className="w-5 h-5 mr-1" />
                     ) : (
                       <TrendingDown className="w-5 h-5 mr-1" />
                     )}
-                    {Math.abs(lastDataPoint.changePercent)}%
+                    {Math.abs(lastDataPoint.changePercentage!)}%
                   </p>
                 )}
               </div>
@@ -83,7 +84,7 @@ const CardPurchaseSummary = () => {
                 />
                 <Area
                   type="linear"
-                  dataKey="totalPurchases"
+                  dataKey="totalPurchased"
                   stroke="#8884d8"
                   fill="#8884d8"
                   dot={true}
